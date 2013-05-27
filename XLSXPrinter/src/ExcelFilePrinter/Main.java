@@ -1,4 +1,4 @@
-package XLSXPrinter;
+package ExcelFilePrinter;
 
 public class Main {
 
