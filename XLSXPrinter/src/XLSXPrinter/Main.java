@@ -1,6 +1,6 @@
 package XLSXPrinter;
 
-public class Controller {
+public class Main {
 
     /**
      * @param args
