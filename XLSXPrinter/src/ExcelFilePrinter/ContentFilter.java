@@ -37,6 +37,7 @@ public class ContentFilter {
         new PrintJob(null).printText(pojo);
     }
 
+    @SuppressWarnings("deprecation")
     public String getDateString(final Date dateKey) {
         final StringBuilder searchKey = new StringBuilder();
         searchKey.append(dateKey.getDate()).append(".");

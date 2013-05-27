@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -29,14 +31,14 @@ public class ExcelFileReader {
         final XSSFSheet sheet = wb.getSheetAt(0);
         XSSFRow row;
         XSSFCell cell;
-        final Iterator rows = sheet.rowIterator();
+        final Iterator<Row> rows = sheet.rowIterator();
 
         final List<String> contentList = new ArrayList<String>();
         StringBuilder content;
         while (rows.hasNext()) {
             content = new StringBuilder();
             row = (XSSFRow) rows.next();
-            final Iterator cells = row.cellIterator();
+            final Iterator<Cell> cells = row.cellIterator();
             while (cells.hasNext()) {
                 cell = (XSSFCell) cells.next();
                 if (cell.getCellType() == XSSFCell.CELL_TYPE_STRING) {
