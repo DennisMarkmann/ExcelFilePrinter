@@ -44,7 +44,8 @@ public class ExcelFileReader {
                 if (cell.getCellType() == XSSFCell.CELL_TYPE_STRING) {
                     content.append(cell.getStringCellValue()).append(" ");
                 } else if (cell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
-                    content.append(cell.getNumericCellValue()).append(" ");
+                    content.append(cell.getDateCellValue()).append(" ");
+                    // content.append(cell.getNumericCellValue()).append(" ");
                 } else {
                     // U Can Handel Boolean, Formula, Errors
                 }
