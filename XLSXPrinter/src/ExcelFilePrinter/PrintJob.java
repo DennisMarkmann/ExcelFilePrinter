@@ -1,4 +1,4 @@
-package XLSXPrinter;
+package ExcelFilePrinter;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -181,7 +181,7 @@ class PrintJob implements Printable {
         final StringBuilder printText = new StringBuilder();
 
         for (final String entry : pojo.getContentList()) {
-            printText.append(entry).append("\r\n");
+            printText.append(entry).append(System.lineSeparator());
         }
         return printText.toString();
 

@@ -1,9 +1,9 @@
-package XLSXPrinter;
+package Exceptions;
 
 import javax.swing.JOptionPane;
 
 /**
- * Exception bei leeren oder nicht gefundenen SearchKeys.
+ * Exception for empty or not existing SearchKeys.
  * 
  * @author it1-markde
  * @since JRE6

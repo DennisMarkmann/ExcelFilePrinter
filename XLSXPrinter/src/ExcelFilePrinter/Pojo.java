@@ -1,11 +1,12 @@
-package XLSXPrinter;
+package ExcelFilePrinter;
 
+import java.util.Date;
 import java.util.List;
 
 public class Pojo {
 
     private String path = System.getProperty("user.home") + "\\Desktop\\" + "/Test.xlsx";
-
+    private Date dateKey;
     private String searchKey;
 
     public String getPath() {
@@ -30,6 +31,14 @@ public class Pojo {
 
     public void setSearchKey(final String searchKey) {
         this.searchKey = searchKey;
+    }
+
+    public Date getDateKey() {
+        return dateKey;
+    }
+
+    public void setDateKey(Date dateKey) {
+        this.dateKey = dateKey;
     }
 
     private List<String> contentList;

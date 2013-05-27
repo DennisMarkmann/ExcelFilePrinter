@@ -1,4 +1,4 @@
-package XLSXPrinter;
+package ExcelFilePrinter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,11 +12,20 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import Exceptions.InputErrorExpception;
+
 public class ExcelFileReader {
 
     public void readXLSXFile(final Pojo pojo) throws IOException {
         final InputStream ExcelFileToRead = new FileInputStream(pojo.getPath());
-        final XSSFWorkbook wb = new XSSFWorkbook(ExcelFileToRead);
+        XSSFWorkbook wb = null;
+        try {
+            wb = new XSSFWorkbook(ExcelFileToRead);
+        } catch (final org.apache.poi.POIXMLException e) {
+            new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
+            return;
+        }
+
         final XSSFSheet sheet = wb.getSheetAt(0);
         XSSFRow row;
         XSSFCell cell;
