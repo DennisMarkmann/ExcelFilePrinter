@@ -47,10 +47,6 @@ public class ChooseFrame extends JFrame {
         c.gridy = 1;
         this.add(searchKeyField, c);
 
-        c.gridx = 0;
-        c.gridy = 2;
-        this.add(commitButton, c);
-
         c.gridx = 1;
         c.gridy = 0;
         this.add(dateLabel, c);
@@ -58,6 +54,10 @@ public class ChooseFrame extends JFrame {
         c.gridx = 1;
         c.gridy = 1;
         this.add(chooser, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        this.add(commitButton, c);
 
         // c.gridx = 1;
         // c.gridy = 2;
@@ -67,5 +67,6 @@ public class ChooseFrame extends JFrame {
         // dateCommitButton.addActionListener(new ChooseFrameListener(this, null, pojo, chooser, dateCommitButton));
 
         this.setVisible(true);
+        this.pack();
     }
 }

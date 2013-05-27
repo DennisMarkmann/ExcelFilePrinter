@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Exceptions.InputErrorExpception;
+import Exceptions.SearchKeyNotFoundExpception;
 
 public class ExcelFileReader {
 
@@ -25,7 +26,10 @@ public class ExcelFileReader {
             wb = new XSSFWorkbook(ExcelFileToRead);
         } catch (final org.apache.poi.POIXMLException e) {
             new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
-            return;
+            System.exit(1);
+        } catch (final java.util.zip.ZipException e) {
+            new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
+            System.exit(1);
         }
 
         final XSSFSheet sheet = wb.getSheetAt(0);

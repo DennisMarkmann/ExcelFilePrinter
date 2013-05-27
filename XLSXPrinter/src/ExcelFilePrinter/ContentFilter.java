@@ -16,7 +16,7 @@ public class ContentFilter {
 
         if ((searchString == null || searchString.equals("")) && (dateKey == null || dateKey.equals(""))) {
             new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
-            return;
+            System.exit(1);
         } else if (searchString != null && !searchString.equals("")) {
             searchKey = searchString;
         } else if (dateKey != null && !dateKey.equals("")) {
@@ -31,7 +31,7 @@ public class ContentFilter {
         }
         if (filteredContentList.size() == 0) {
             new SearchKeyNotFoundExpception("SearchKey nicht gefunden.").showDialog();
-            return;
+            System.exit(1);
         }
         pojo.setContentList(filteredContentList);
         new PrintJob(null).printText(pojo);

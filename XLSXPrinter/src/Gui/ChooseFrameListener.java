@@ -34,13 +34,13 @@ public class ChooseFrameListener implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent event) {
 
-        if (!this.field.getText().equals("") && this.field != null) {
-            this.pojo.setSearchKey(this.field.getText());
-        } else if (!this.chooser.getDate().equals("") && this.chooser != null) {
-            this.pojo.setDateKey(this.chooser.getDate());
-        } else {
-            new SearchKeyNotFoundExpception("SearchKey muss gefüllt sein.").showDialog();
+        if ((this.field == null || this.field.equals("")) && (this.chooser == null || this.chooser.equals(""))) {
+            new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
             return;
+        } else if (this.field != null && !this.field.equals("")) {
+            this.pojo.setSearchKey(this.field.getText());
+        } else if (this.chooser != null && !this.chooser.equals("")) {
+            this.pojo.setDateKey(this.chooser.getDate());
         }
 
         this.chooseFrame.dispose();
@@ -48,7 +48,7 @@ public class ChooseFrameListener implements ActionListener {
         try {
             new ExcelFileReader().readXLSXFile(this.pojo);
         } catch (final IOException e) {
-            e.printStackTrace();
+            System.exit(1);
         }
 
     }
