@@ -28,11 +28,11 @@ public class ExcelFileReader {
             wb = new XSSFWorkbook(ExcelFileToRead);
         } catch (final org.apache.poi.POIXMLException e) {
             new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
-            new programmRestarter().reStartFull();
+            new ProgrammRestarter().reStartFull();
             return;
         } catch (final java.util.zip.ZipException e) {
             new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
-            new programmRestarter().reStart(pojo);
+            new ProgrammRestarter().reStart(pojo);
             return;
         }
 

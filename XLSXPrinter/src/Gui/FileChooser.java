@@ -3,7 +3,7 @@ package Gui;
 import java.awt.FileDialog;
 import java.awt.Frame;
 
-import ExcelFilePrinter.programmRestarter;
+import ExcelFilePrinter.ProgrammRestarter;
 import Exceptions.InputErrorExpception;
 import Storage.Pojo;
 
@@ -19,12 +19,12 @@ public class FileChooser {
 
             } else {
                 new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
-                new programmRestarter().reStartFull();
+                new ProgrammRestarter().reStartFull();
                 return;
             }
         } catch (final java.lang.StringIndexOutOfBoundsException e) {
             new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
-            new programmRestarter().reStartFull();
+            new ProgrammRestarter().reStartFull();
             return;
         }
 

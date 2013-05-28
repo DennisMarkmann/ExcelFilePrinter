@@ -184,7 +184,7 @@ class PrintJob implements Printable {
             final PrintJob pt = new PrintJob(entry.printAll());
             pt.printAllPages();
         }
-        new programmRestarter().reStart(pojo);
+        new ProgrammRestarter().reStart(pojo);
         return;
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pojo {
 
-    private String path = System.getProperty("user.home") + "\\Desktop\\" + "/Test.xlsx";
+    private String path;
     private Date dateKey;
     private String searchKey;
     private List<Entry> entryList;

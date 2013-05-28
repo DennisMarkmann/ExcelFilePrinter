@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.swing.JTextField;
 
 import ExcelFilePrinter.ExcelFileReader;
-import ExcelFilePrinter.programmRestarter;
+import ExcelFilePrinter.ProgrammRestarter;
 import Exceptions.InputErrorExpception;
 import Exceptions.SearchKeyNotFoundExpception;
 import Storage.Pojo;
@@ -55,7 +55,7 @@ public class ChooseFrameListener implements ActionListener {
             new ExcelFileReader().readXLSXFile(this.pojo);
         } catch (final IOException e) {
             new InputErrorExpception("Fehler bei der Dateiauswahl.").showDialog();
-            new programmRestarter().reStartFull();
+            new ProgrammRestarter().reStartFull();
             return;
         }
 
