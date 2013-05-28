@@ -11,43 +11,43 @@ public class Pojo {
     private List<String> contentList;
     private List<Entry> entryList;
 
-    public String getPath() {
+    public final String getPath() {
         return this.path;
     }
 
-    public void setPath(final String path) {
+    public final void setPath(final String path) {
         this.path = path;
     }
 
-    public List<String> getContentList() {
+    public final List<String> getContentList() {
         return this.contentList;
     }
 
-    public void setContentList(final List<String> contentList) {
+    public final void setContentList(final List<String> contentList) {
         this.contentList = contentList;
     }
 
-    public String getSearchKey() {
+    public final String getSearchKey() {
         return this.searchKey;
     }
 
-    public void setSearchKey(final String searchKey) {
+    public final void setSearchKey(final String searchKey) {
         this.searchKey = searchKey;
     }
 
-    public Date getDateKey() {
+    public final Date getDateKey() {
         return this.dateKey;
     }
 
-    public void setDateKey(final Date dateKey) {
+    public final void setDateKey(final Date dateKey) {
         this.dateKey = dateKey;
     }
 
-    public List<Entry> getEntryList() {
-        return entryList;
+    public final List<Entry> getEntryList() {
+        return this.entryList;
     }
 
-    public void setEntryList(List<Entry> entryList) {
+    public final void setEntryList(final List<Entry> entryList) {
         this.entryList = entryList;
     }
 

@@ -11,71 +11,71 @@ public class Entry {
     private String bemerkung;
     private String bearbeiter;
 
-    public String getId() {
+    public final String getId() {
         return this.id;
     }
 
-    public void setId(final String id) {
+    public final void setId(final String id) {
         this.id = id;
     }
 
-    public String getCaseNr() {
+    public final String getCaseNr() {
         return this.caseNr;
     }
 
-    public void setCaseNr(final String caseNr) {
+    public final void setCaseNr(final String caseNr) {
         this.caseNr = caseNr;
     }
 
-    public String getEingelagert() {
+    public final String getEingelagert() {
         return this.eingelagert;
     }
 
-    public void setEingelagert(final String eingelagert) {
+    public final void setEingelagert(final String eingelagert) {
         this.eingelagert = eingelagert;
     }
 
-    public String getLieferant() {
+    public final String getLieferant() {
         return this.lieferant;
     }
 
-    public void setLieferant(final String lieferant) {
+    public final void setLieferant(final String lieferant) {
         this.lieferant = lieferant;
     }
 
-    public String getKorrespondenzDatum() {
+    public final String getKorrespondenzDatum() {
         return this.korrespondenzDatum;
     }
 
-    public void setKorrespondenzDatum(final String korrespondenzDatum) {
+    public final void setKorrespondenzDatum(final String korrespondenzDatum) {
         this.korrespondenzDatum = korrespondenzDatum;
     }
 
-    public String getArbeitsTitel() {
+    public final String getArbeitsTitel() {
         return this.arbeitsTitel;
     }
 
-    public void setArbeitsTitel(final String arbeitsTitel) {
+    public final void setArbeitsTitel(final String arbeitsTitel) {
         this.arbeitsTitel = arbeitsTitel;
     }
 
-    public String getBemerkung() {
+    public final String getBemerkung() {
         return this.bemerkung;
     }
 
-    public void setBemerkung(final String bemerkung) {
+    public final void setBemerkung(final String bemerkung) {
         this.bemerkung = bemerkung;
     }
 
-    public String getBearbeiter() {
+    public final String getBearbeiter() {
         return this.bearbeiter;
     }
 
-    public void setBearbeiter(final String bearbeiter) {
+    public final void setBearbeiter(final String bearbeiter) {
         this.bearbeiter = bearbeiter;
     }
 
-    public String printAll() {
+    public final String printAll() {
         return this.getId() + " " + this.getCaseNr() + " " + this.getEingelagert() + " " + this.getLieferant() + " "
                 + this.getKorrespondenzDatum() + " " + this.getArbeitsTitel() + " " + this.getBemerkung() + " "
                 + this.getBearbeiter();

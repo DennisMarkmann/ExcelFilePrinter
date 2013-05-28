@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JTextField;
 
 import ExcelFilePrinter.ExcelFileReader;
+import Exceptions.InputErrorExpception;
 import Exceptions.SearchKeyNotFoundExpception;
 import Storage.Pojo;
 
@@ -32,13 +33,13 @@ public class ChooseFrameListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(final ActionEvent event) {
+    public final void actionPerformed(final ActionEvent event) {
         try {
             if ((this.field.getText() == null || this.field.getText().equals(""))
                     && (this.chooser.getDate() == null || this.chooser.getDate().equals(""))) {
                 new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
                 return;
-            } else if ((!this.field.getText().equals("") && !this.chooser.getDate().equals(""))) {
+            } else if ((!this.field.getText().equals("") && this.chooser.getDate() != null)) {
                 new SearchKeyNotFoundExpception("SearchKey ODER Datum muss gefüllt sein.").showDialog();
                 return;
             } else if (this.field.getText() != null && !this.field.getText().equals("")) {
@@ -55,6 +56,7 @@ public class ChooseFrameListener implements ActionListener {
         try {
             new ExcelFileReader().readXLSXFile(this.pojo);
         } catch (final IOException e) {
+            new InputErrorExpception("Fehler bei der Dateiauswahl.").showDialog();
             System.exit(1);
         }
 

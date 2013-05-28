@@ -10,7 +10,7 @@ import Storage.Pojo;
 
 public class ContentFilter {
 
-    public void filterContent(final Pojo pojo) {
+    public final void filterContent(final Pojo pojo) {
 
         final String searchString = pojo.getSearchKey();
         final Date dateKey = pojo.getDateKey();
@@ -21,6 +21,7 @@ public class ContentFilter {
         if ((searchString == null || searchString.equals("")) && (dateKey == null || dateKey.equals(""))) {
             new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
             System.exit(1);
+
         } else if (searchString != null && !searchString.equals("")) {
             searchKeyString = searchString;
         } else if (dateKey != null && !dateKey.equals("")) {
@@ -48,7 +49,6 @@ public class ContentFilter {
         pojo.setEntryList(filteredEntryList);
         new PrintJob(null).printText(pojo);
     }
-
     // @SuppressWarnings("deprecation")
     // public String getDateString(final Date dateKey) {
     // final StringBuilder searchKey = new StringBuilder();

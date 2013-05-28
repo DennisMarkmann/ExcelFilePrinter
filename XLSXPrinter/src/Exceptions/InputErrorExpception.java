@@ -16,7 +16,7 @@ public class InputErrorExpception extends Exception {
         super(message);
     }
 
-    public void showDialog() {
+    public final void showDialog() {
         JOptionPane.showMessageDialog(null, this.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
     }
 }

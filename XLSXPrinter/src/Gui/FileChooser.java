@@ -7,7 +7,7 @@ import Storage.Pojo;
 
 public class FileChooser {
 
-    public void chooseFile(final Pojo pojo) {
+    public final void chooseFile(final Pojo pojo) {
         final FileDialog fd = new FileDialog(new Frame(), "");
         fd.setVisible(true);
 

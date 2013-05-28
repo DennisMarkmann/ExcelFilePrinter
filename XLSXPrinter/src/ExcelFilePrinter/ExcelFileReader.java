@@ -21,7 +21,7 @@ import Storage.Pojo;
 
 public class ExcelFileReader {
 
-    public void readXLSXFile(final Pojo pojo) throws IOException {
+    public final void readXLSXFile(final Pojo pojo) throws IOException {
         final InputStream ExcelFileToRead = new FileInputStream(pojo.getPath());
         XSSFWorkbook wb = null;
         try {
