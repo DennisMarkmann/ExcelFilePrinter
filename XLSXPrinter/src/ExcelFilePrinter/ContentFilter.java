@@ -49,16 +49,4 @@ public class ContentFilter {
         pojo.setEntryList(filteredEntryList);
         new PrintJob(null).printText(pojo);
     }
-    // @SuppressWarnings("deprecation")
-    // public String getDateString(final Date dateKey) {
-    // final StringBuilder searchKey = new StringBuilder();
-    // searchKey.append(dateKey.getDate()).append(".");
-    // if ((dateKey.getMonth() + "").length() == 1) {
-    // searchKey.append("0");
-    // }
-    // searchKey.append(dateKey.getMonth() + 1).append(".");
-    // searchKey.append("20").append((dateKey.getYear() + "").substring(1, 3));
-    //
-    // return searchKey.toString();
-    // }
 }
