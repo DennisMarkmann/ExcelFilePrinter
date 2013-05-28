@@ -33,16 +33,23 @@ public class ChooseFrameListener implements ActionListener {
 
     @Override
     public void actionPerformed(final ActionEvent event) {
-
-        if ((this.field == null || this.field.equals("")) && (this.chooser == null || this.chooser.equals(""))) {
-            new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
+        try {
+            if ((this.field.getText() == null || this.field.getText().equals(""))
+                    && (this.chooser.getDate() == null || this.chooser.getDate().equals(""))) {
+                new SearchKeyNotFoundExpception("SearchKey oder Datum muss gefüllt sein.").showDialog();
+                return;
+            } else if ((!this.field.getText().equals("") && !this.chooser.getDate().equals(""))) {
+                new SearchKeyNotFoundExpception("SearchKey ODER Datum muss gefüllt sein.").showDialog();
+                return;
+            } else if (this.field.getText() != null && !this.field.getText().equals("")) {
+                this.pojo.setSearchKey(this.field.getText());
+            } else if (this.chooser.getDate() != null && !this.chooser.getDate().equals("")) {
+                this.pojo.setDateKey(this.chooser.getDate());
+            }
+        } catch (final java.lang.NullPointerException e) {
+            new SearchKeyNotFoundExpception("Bitte geben Sie ein gültiges Datum oder einen searchKey an.").showDialog();
             return;
-        } else if (this.field != null && !this.field.equals("")) {
-            this.pojo.setSearchKey(this.field.getText());
-        } else if (this.chooser != null && !this.chooser.equals("")) {
-            this.pojo.setDateKey(this.chooser.getDate());
         }
-
         this.chooseFrame.dispose();
 
         try {
