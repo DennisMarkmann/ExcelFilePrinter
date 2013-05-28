@@ -8,7 +8,6 @@ public class Pojo {
     private String path = System.getProperty("user.home") + "\\Desktop\\" + "/Test.xlsx";
     private Date dateKey;
     private String searchKey;
-    private List<String> contentList;
     private List<Entry> entryList;
 
     public final String getPath() {
@@ -17,14 +16,6 @@ public class Pojo {
 
     public final void setPath(final String path) {
         this.path = path;
-    }
-
-    public final List<String> getContentList() {
-        return this.contentList;
-    }
-
-    public final void setContentList(final List<String> contentList) {
-        this.contentList = contentList;
     }
 
     public final String getSearchKey() {

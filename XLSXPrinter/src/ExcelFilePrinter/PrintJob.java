@@ -103,7 +103,6 @@ class PrintJob implements Printable {
         try {
             this.printerJob.print();
         } catch (final PrinterException e) {
-            e.printStackTrace();
             return false;
         }
         return true;
@@ -179,24 +178,14 @@ class PrintJob implements Printable {
         return this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
     }
 
-    // private String generateText(final Pojo pojo) {
-    //
-    // final StringBuilder printText = new StringBuilder();
-    //
-    // for (final Entry entry : pojo.getEntryList()) {
-    // printText.append(entry.printAll()).append(System.lineSeparator());
-    //
-    // }
-    // return printText.toString();
-    //
-    // }
-
     final void printText(final Pojo pojo) {
-        // final String printText = this.generateText(pojo);
 
         for (final Entry entry : pojo.getEntryList()) {
             final PrintJob pt = new PrintJob(entry.printAll());
             pt.printAllPages();
         }
+        new programmRestarter().reStart(pojo);
+        return;
     }
+
 }
