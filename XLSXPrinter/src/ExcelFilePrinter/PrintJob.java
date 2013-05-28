@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
@@ -13,6 +14,12 @@ import java.awt.print.PrinterJob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.DocFlavor;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.ServiceUI;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.text.BadLocationException;
@@ -43,7 +50,7 @@ class PrintJob implements Printable {
 
     PrintJob(final String printText) {
 
-        this.fontForPrint = new Font("Arial", Font.PLAIN, 16 * CONS);
+        this.fontForPrint = new Font("Arial", Font.BOLD, 10 * CONS);
         this.pageFormat = new PageFormat();
 
         this.pageDim = new Dimension(
@@ -98,6 +105,7 @@ class PrintJob implements Printable {
         if (page < 0 | page > this.numberOfPages - 1) {
             return false;
         }
+        this.selectPrinter();
         this.printerJob.setPrintable(this, this.pageFormat);
         this.textPassage = this.textPassages.get(page);
         try {
@@ -178,14 +186,86 @@ class PrintJob implements Printable {
         return this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
     }
 
+    public String generateText(final Entry entry) {
+
+        this.compareLength(entry);
+        final StringBuilder printText = new StringBuilder();
+
+        printText.append("Case/Art.Nr.: ").append(entry.getCaseNr());
+        printText.append("  Eingang: ").append(entry.getEingelagert()).append(System.lineSeparator());
+        printText.append("Von: ").append(entry.getLieferant());
+        printText.append("  Muster Nr.: ").append(entry.getId()).append(System.lineSeparator());
+        if (entry.getArbeitsTitel().length() >= 35) {
+            printText.append("Arbeitstitel: ").append(entry.getArbeitsTitel().substring(0, 34)).append(System.lineSeparator());
+            printText.append((entry.getArbeitsTitel().substring(34, entry.getArbeitsTitel().length()))).append(
+                    System.lineSeparator());
+        } else {
+            printText.append("Arbeitstitel: ").append(entry.getArbeitsTitel()).append(System.lineSeparator());
+            printText.append(System.lineSeparator());
+
+        }
+        printText.append("Bemerkung: ").append(entry.getBemerkung()).append(System.lineSeparator());
+        printText.append("Bearbeiter: ").append(entry.getBearbeiter()).append(System.lineSeparator());
+
+        return printText.toString();
+
+    }
+
+    public void compareLength(final Entry entry) {
+
+        final String caseNr = entry.getCaseNr();
+        final String lieferant = entry.getLieferant();
+
+        final int caseBytes = caseNr.length() + 14 + 4;
+        final int lieferantBytes = lieferant.length() + 5;
+        int spaceNumber = 0;
+        final StringBuilder returnString = new StringBuilder();
+
+        if (caseBytes > lieferantBytes) {
+            spaceNumber = caseBytes - lieferantBytes;
+            returnString.append(lieferant);
+
+            for (int i = 0; i < spaceNumber; i++) {
+                returnString.append(" ");
+            }
+            entry.setLieferant(returnString.toString());
+
+        } else if (caseBytes < lieferantBytes) {
+            spaceNumber = lieferantBytes - caseBytes;
+            returnString.append(caseNr);
+
+            for (int i = 0; i < spaceNumber; i++) {
+                returnString.append(" ");
+            }
+            entry.setCaseNr(returnString.toString());
+        }
+
+    }
+
     final void printText(final Pojo pojo) {
 
         for (final Entry entry : pojo.getEntryList()) {
-            final PrintJob pt = new PrintJob(entry.printAll());
+            final PrintJob pt = new PrintJob(this.generateText(entry));
             pt.printAllPages();
         }
         new ProgrammRestarter().reStart(pojo);
         return;
     }
 
+    public void selectPrinter() {
+        final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+        final DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        final PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, pras);
+        final PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
+        PrintService service = null;
+        service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment()
+                .getDefaultScreenDevice()
+                .getDefaultConfiguration(), 200, 200, printService, defaultService, flavor, pras);
+
+        try {
+            this.printerJob.setPrintService(service);
+        } catch (final PrinterException e) {
+            e.printStackTrace();
+        }
+    }
 }

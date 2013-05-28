@@ -26,6 +26,8 @@ public class FileChooser {
             new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
             new ProgrammRestarter().reStartFull();
             return;
+        } catch (final java.lang.NullPointerException e) {
+            System.exit(1);
         }
 
     }
