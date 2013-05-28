@@ -35,13 +35,24 @@ public class ExcelFileReader {
             new ProgrammRestarter().reStart(pojo);
             return;
         }
+        XSSFSheet sheet;
+        final List<Entry> entryList = new ArrayList<Entry>();
 
-        final XSSFSheet sheet = wb.getSheetAt(0);
+        for (int i = 0; i <= 4; i++) {
+            sheet = wb.getSheetAt(i);
+            this.readSheet(entryList, sheet);
+        }
+
+        pojo.setEntryList(entryList);
+        new ContentFilter().filterContent(pojo);
+
+    }
+
+    public final void readSheet(final List<Entry> entryList, final XSSFSheet sheet) {
         XSSFRow row;
         XSSFCell cell;
         final Iterator<Row> rows = sheet.rowIterator();
 
-        final List<Entry> entryList = new ArrayList<Entry>();
         int rowID = 0;
         Entry entry;
         while (rows.hasNext()) {
@@ -126,8 +137,5 @@ public class ExcelFileReader {
             }
             rowID++;
         }
-        pojo.setEntryList(entryList);
-        new ContentFilter().filterContent(pojo);
-
     }
 }
