@@ -114,7 +114,6 @@ class PrintJob implements Printable {
         for (int i = 0; i < this.numberOfPages; i++) {
             this.printPage(i);
         }
-        System.exit(1);
     }
 
     @Override
@@ -180,22 +179,24 @@ class PrintJob implements Printable {
         return this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
     }
 
-    private String generateText(final Pojo pojo) {
-
-        final StringBuilder printText = new StringBuilder();
-
-        for (final Entry entry : pojo.getEntryList()) {
-            printText.append(entry.printAll()).append(System.lineSeparator());
-
-        }
-        return printText.toString();
-
-    }
+    // private String generateText(final Pojo pojo) {
+    //
+    // final StringBuilder printText = new StringBuilder();
+    //
+    // for (final Entry entry : pojo.getEntryList()) {
+    // printText.append(entry.printAll()).append(System.lineSeparator());
+    //
+    // }
+    // return printText.toString();
+    //
+    // }
 
     final void printText(final Pojo pojo) {
-        final String printText = this.generateText(pojo);
+        // final String printText = this.generateText(pojo);
 
-        final PrintJob pt = new PrintJob(printText);
-        pt.printAllPages();
+        for (final Entry entry : pojo.getEntryList()) {
+            final PrintJob pt = new PrintJob(entry.printAll());
+            pt.printAllPages();
+        }
     }
 }
