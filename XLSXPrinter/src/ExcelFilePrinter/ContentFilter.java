@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import Exceptions.SearchKeyNotFoundExpception;
+import Storage.Entry;
+import Storage.Pojo;
 
 public class ContentFilter {
 
@@ -22,18 +24,19 @@ public class ContentFilter {
         } else if (dateKey != null && !dateKey.equals("")) {
             searchKey = this.getDateString(dateKey);
         }
-        final List<String> filteredContentList = new ArrayList<String>();
+        final List<Entry> filteredEntryList = new ArrayList<Entry>();
 
-        for (final String entry : pojo.getContentList()) {
-            if (entry.contains(searchKey)) {
-                filteredContentList.add(entry);
+        for (final Entry entry : pojo.getEntryList()) {
+
+            if (entry.getId().toLowerCase().trim().equals(searchKey.toLowerCase().trim())) {
+                filteredEntryList.add(entry);
             }
         }
-        if (filteredContentList.size() == 0) {
+        if (filteredEntryList.size() == 0) {
             new SearchKeyNotFoundExpception("SearchKey nicht gefunden.").showDialog();
             System.exit(1);
         }
-        pojo.setContentList(filteredContentList);
+        pojo.setEntryList(filteredEntryList);
         new PrintJob(null).printText(pojo);
     }
 

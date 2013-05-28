@@ -2,6 +2,7 @@ package ExcelFilePrinter;
 
 import Gui.ChooseFrame;
 import Gui.FileChooser;
+import Storage.Pojo;
 
 public class Main {
 

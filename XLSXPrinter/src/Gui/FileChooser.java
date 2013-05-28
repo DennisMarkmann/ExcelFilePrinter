@@ -3,7 +3,7 @@ package Gui;
 import java.awt.FileDialog;
 import java.awt.Frame;
 
-import ExcelFilePrinter.Pojo;
+import Storage.Pojo;
 
 public class FileChooser {
 

@@ -1,4 +1,4 @@
-package ExcelFilePrinter;
+package Storage;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +8,8 @@ public class Pojo {
     private String path = System.getProperty("user.home") + "\\Desktop\\" + "/Test.xlsx";
     private Date dateKey;
     private String searchKey;
+    private List<String> contentList;
+    private List<Entry> entryList;
 
     public String getPath() {
         return this.path;
@@ -34,13 +36,19 @@ public class Pojo {
     }
 
     public Date getDateKey() {
-        return dateKey;
+        return this.dateKey;
     }
 
-    public void setDateKey(Date dateKey) {
+    public void setDateKey(final Date dateKey) {
         this.dateKey = dateKey;
     }
 
-    private List<String> contentList;
+    public List<Entry> getEntryList() {
+        return entryList;
+    }
+
+    public void setEntryList(List<Entry> entryList) {
+        this.entryList = entryList;
+    }
 
 }

@@ -19,6 +19,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
 
+import Storage.Entry;
+import Storage.Pojo;
+
 class PrintJob implements Printable {
 
     private final PageFormat pageFormat;
@@ -180,8 +183,9 @@ class PrintJob implements Printable {
 
         final StringBuilder printText = new StringBuilder();
 
-        for (final String entry : pojo.getContentList()) {
-            printText.append(entry).append(System.lineSeparator());
+        for (final Entry entry : pojo.getEntryList()) {
+            printText.append(entry.printAll()).append(System.lineSeparator());
+
         }
         return printText.toString();
 
@@ -189,6 +193,7 @@ class PrintJob implements Printable {
 
     final void printText(final Pojo pojo) {
         final String printText = this.generateText(pojo);
+
         final PrintJob pt = new PrintJob(printText);
         pt.printAllPages();
     }
