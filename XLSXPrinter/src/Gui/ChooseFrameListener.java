@@ -14,18 +14,14 @@ import Storage.Pojo;
 
 import com.toedter.calendar.JDateChooser;
 
-public class ChooseFrameListener implements ActionListener {
+class ChooseFrameListener implements ActionListener {
 
     private final ChooseFrame chooseFrame;
     private final JTextField field;
     private final Pojo pojo;
     private final JDateChooser chooser;
 
-    public ChooseFrameListener(
-            final ChooseFrame chooseFrame,
-            final JTextField field,
-            final Pojo pojo,
-            final JDateChooser chooser) {
+    ChooseFrameListener(final ChooseFrame chooseFrame, final JTextField field, final Pojo pojo, final JDateChooser chooser) {
 
         this.chooseFrame = chooseFrame;
         this.field = field;

@@ -74,11 +74,4 @@ public class Entry {
     public final void setBearbeiter(final String bearbeiter) {
         this.bearbeiter = bearbeiter;
     }
-
-    public final String printAll() {
-        return this.getId() + " " + this.getCaseNr() + " " + this.getEingelagert() + " " + this.getLieferant() + " "
-                + this.getKorrespondenzDatum() + " " + this.getArbeitsTitel() + " " + this.getBemerkung() + " "
-                + this.getBearbeiter();
-
-    }
 }

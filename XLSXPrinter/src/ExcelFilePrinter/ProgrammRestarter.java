@@ -6,7 +6,7 @@ import Storage.Pojo;
 
 public class ProgrammRestarter {
 
-    public final void reStart(final Pojo pojo) {
+    final void reStart(final Pojo pojo) {
         final String path = pojo.getPath();
         final Pojo newPojo = new Pojo();
         newPojo.setPath(path);

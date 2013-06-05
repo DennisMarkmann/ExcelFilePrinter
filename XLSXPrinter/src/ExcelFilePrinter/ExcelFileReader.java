@@ -48,7 +48,7 @@ public class ExcelFileReader {
 
     }
 
-    public final void readSheet(final List<Entry> entryList, final XSSFSheet sheet) {
+    private final void readSheet(final List<Entry> entryList, final XSSFSheet sheet) {
         XSSFRow row;
         XSSFCell cell;
         final Iterator<Row> rows = sheet.rowIterator();

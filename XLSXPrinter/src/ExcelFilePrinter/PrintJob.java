@@ -186,7 +186,7 @@ class PrintJob implements Printable {
         return this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
     }
 
-    public String generateText(final Entry entry) {
+    private String generateText(final Entry entry) {
 
         this.compareLength(entry);
         final StringBuilder printText = new StringBuilder();
@@ -211,7 +211,7 @@ class PrintJob implements Printable {
 
     }
 
-    public void compareLength(final Entry entry) {
+    private void compareLength(final Entry entry) {
 
         final String caseNr = entry.getCaseNr();
         final String lieferant = entry.getLieferant();
@@ -252,7 +252,7 @@ class PrintJob implements Printable {
         return;
     }
 
-    public void selectPrinter() {
+    private void selectPrinter() {
         final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
         final DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
         final PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, pras);

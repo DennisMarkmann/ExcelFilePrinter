@@ -8,9 +8,9 @@ import Exceptions.SearchKeyNotFoundExpception;
 import Storage.Entry;
 import Storage.Pojo;
 
-public class ContentFilter {
+class ContentFilter {
 
-    public final void filterContent(final Pojo pojo) {
+    final void filterContent(final Pojo pojo) {
 
         final String searchString = pojo.getSearchKey();
         final Date dateKey = pojo.getDateKey();

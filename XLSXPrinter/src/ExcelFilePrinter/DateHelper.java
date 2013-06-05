@@ -2,10 +2,10 @@ package ExcelFilePrinter;
 
 import java.util.Date;
 
-public class DateHelper {
+class DateHelper {
 
     @SuppressWarnings("deprecation")
-    public final String getDateString(final Date dateKey) {
+    final String getDateString(final Date dateKey) {
         final StringBuilder dateString = new StringBuilder();
         if ((dateKey.getDate() + "").length() == 1) {
             dateString.append("0");
