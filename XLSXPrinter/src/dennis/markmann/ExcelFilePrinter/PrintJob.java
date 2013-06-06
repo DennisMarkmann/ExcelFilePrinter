@@ -1,4 +1,4 @@
-package ExcelFilePrinter;
+package dennis.markmann.ExcelFilePrinter;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -26,8 +26,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
 
-import Storage.Entry;
-import Storage.Pojo;
+import dennis.markmann.ExcelFilePrinter.Storage.Entry;
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
+
 
 class PrintJob implements Printable {
 
@@ -255,7 +256,7 @@ class PrintJob implements Printable {
     private void selectPrinter() {
         final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
         final DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
-        final PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, pras);
+        final PrintService[] printService = PrintServiceLookup.lookupPrintServices(flavor, pras);
         final PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
         PrintService service = null;
         service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment()

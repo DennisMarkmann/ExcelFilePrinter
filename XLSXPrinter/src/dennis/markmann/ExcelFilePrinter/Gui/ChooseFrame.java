@@ -1,4 +1,4 @@
-package Gui;
+package dennis.markmann.ExcelFilePrinter.Gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -11,9 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Storage.Pojo;
 
 import com.toedter.calendar.JDateChooser;
+
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
 
 public class ChooseFrame extends JFrame {
 

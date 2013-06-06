@@ -1,12 +1,13 @@
-package ExcelFilePrinter;
+package dennis.markmann.ExcelFilePrinter;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Exceptions.SearchKeyNotFoundExpception;
-import Storage.Entry;
-import Storage.Pojo;
+import dennis.markmann.ExcelFilePrinter.Exceptions.SearchKeyNotFoundExpception;
+import dennis.markmann.ExcelFilePrinter.Storage.Entry;
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
+
 
 class ContentFilter {
 

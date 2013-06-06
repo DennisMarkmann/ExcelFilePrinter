@@ -1,4 +1,4 @@
-package ExcelFilePrinter;
+package dennis.markmann.ExcelFilePrinter;
 
 import java.util.Date;
 

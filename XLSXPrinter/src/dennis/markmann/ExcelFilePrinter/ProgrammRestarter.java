@@ -1,8 +1,8 @@
-package ExcelFilePrinter;
+package dennis.markmann.ExcelFilePrinter;
 
-import Gui.ChooseFrame;
-import Gui.FileChooser;
-import Storage.Pojo;
+import dennis.markmann.ExcelFilePrinter.Gui.ChooseFrame;
+import dennis.markmann.ExcelFilePrinter.Gui.FileChooser;
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
 
 public class ProgrammRestarter {
 

@@ -1,4 +1,4 @@
-package ExcelFilePrinter;
+package dennis.markmann.ExcelFilePrinter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,18 +14,18 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import Exceptions.InputErrorExpception;
-import Exceptions.SearchKeyNotFoundExpception;
-import Storage.Entry;
-import Storage.Pojo;
+import dennis.markmann.ExcelFilePrinter.Exceptions.InputErrorExpception;
+import dennis.markmann.ExcelFilePrinter.Exceptions.SearchKeyNotFoundExpception;
+import dennis.markmann.ExcelFilePrinter.Storage.Entry;
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
 
 public class ExcelFileReader {
 
     public final void readXLSXFile(final Pojo pojo) throws IOException {
-        final InputStream ExcelFileToRead = new FileInputStream(pojo.getPath());
+        final InputStream excelFileToRead = new FileInputStream(pojo.getPath());
         XSSFWorkbook wb = null;
         try {
-            wb = new XSSFWorkbook(ExcelFileToRead);
+            wb = new XSSFWorkbook(excelFileToRead);
         } catch (final org.apache.poi.POIXMLException e) {
             new InputErrorExpception("Die Datei konnte nicht eingelesen werden. Bitte wählen Sie eine gültige XLSX-Datei").showDialog();
             new ProgrammRestarter().reStartFull();
@@ -48,7 +48,7 @@ public class ExcelFileReader {
 
     }
 
-    private final void readSheet(final List<Entry> entryList, final XSSFSheet sheet) {
+    private void readSheet(final List<Entry> entryList, final XSSFSheet sheet) {
         XSSFRow row;
         XSSFCell cell;
         final Iterator<Row> rows = sheet.rowIterator();

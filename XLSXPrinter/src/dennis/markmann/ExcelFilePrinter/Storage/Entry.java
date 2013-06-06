@@ -1,4 +1,4 @@
-package Storage;
+package dennis.markmann.ExcelFilePrinter.Storage;
 
 public class Entry {
 

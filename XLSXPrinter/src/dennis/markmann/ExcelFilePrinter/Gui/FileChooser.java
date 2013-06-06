@@ -1,11 +1,11 @@
-package Gui;
+package dennis.markmann.ExcelFilePrinter.Gui;
 
 import java.awt.FileDialog;
 import java.awt.Frame;
 
-import ExcelFilePrinter.ProgrammRestarter;
-import Exceptions.InputErrorExpception;
-import Storage.Pojo;
+import dennis.markmann.ExcelFilePrinter.ProgrammRestarter;
+import dennis.markmann.ExcelFilePrinter.Exceptions.InputErrorExpception;
+import dennis.markmann.ExcelFilePrinter.Storage.Pojo;
 
 public class FileChooser {
 

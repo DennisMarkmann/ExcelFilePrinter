@@ -1,4 +1,4 @@
-package Exceptions;
+package dennis.markmann.ExcelFilePrinter.Exceptions;
 
 import javax.swing.JOptionPane;
 
